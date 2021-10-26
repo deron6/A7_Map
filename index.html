@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Fly to a location based on scroll position</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.js"></script>
+  <style>
+  body { margin: 0; padding: 0; }
+  #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+  <style>
+  #map {
+    position: fixed;
+    width: 50%;
+  }
+  #features {
+    width: 50%;
+    margin-left: 50%;
+    font-family: sans-serif;
+    overflow-y: scroll;
+    background-color: #fafafa;
+  }
+  section {
+    padding: 25px 50px;
+    line-height: 25px;
+    border-bottom: 1px solid #ddd;
+    opacity: 0.25;
+    font-size: 13px;
+  }
+  section.active {
+    opacity: 1;
+  }
+  section:last-child {
+    border-bottom: none;
+    margin-bottom: 200px;
+  }
+</style>
+
+<div id="map"></div>
+<div id="features">
+  <section id="Extraction Point Wyoming" class="active">
+    <h3>Wyoming Bentonite</h3>
+    <p>
+Wyoming has 70 percent of the world’s known supply of bentonite, which is also produced in Greece, Japan, Italy, Brazil, Romania, Germany, Mexico, Argentina, Spain, India, Hungary, Poland, Canada, Turkey, and Cyprus. However, Wyoming’s bentonite has unique characteristics that are rarely found anywhere else. It can swell up to 16 times its original size and absorbs up to 10 times its own weight in water
+Wyoming bentonite is the result of chemical changes in ancient volcanic ash, which originated in western Wyoming and Idaho about 120 million years ago during the late Cretaceous period
+    </p>
+  </section>
+  <section id="Extraction Point Mississippi" >
+    <h3>Mississippi Bentonite</h3>
+    <p>
+Swell Well Minechem Pvt. Ltd. is the most renowned Bentonite supplier in Mississippi. The quality, uses and specifications of our products make them one of the essential properties in most of the industrial applications. As a well-known and premium Bentonite manufacturers in Mississippi, we serve industries such as chemical, rubber, oil-well drilling, iron ore pelletisation, pyrotechnics, insecticides and pesticides and many more. We are the most reputed Mississippin Bentonite manufacturers in Mississippi that supply bentonite gel useful for cosmetic preparations, toothpaste and various types of creams. Our clients have termed us as the best Sodium Bentonite manufacturers in Mississippi as we have the infrastructure and suitable facilities to provide dirt free bentonite to use in ceramic and other similar industries. Bentonite also has great possibilities in medical fields and we have a huge demand from this industry.
+    </p>
+  </section>
+  <section id="Extraction Point Alabama" >
+    <h3>Alabama Bentonite</h3>
+    <p>
+Swell Well Minechem Pvt. Ltd. is the most renowned Bentonite supplier in Alabama. The quality, uses and specifications of our products make them one of the essential properties in most of the industrial applications. As a well-known and premium Bentonite manufacturers in Alabama, we serve industries such as chemical, rubber, oil-well drilling, iron ore pelletisation, pyrotechnics, insecticides and pesticides and many more. We are the most reputed Alabaman Bentonite manufacturers in Alabama that supply bentonite gel useful for cosmetic preparations, toothpaste and various types of creams. Our clients have termed us as the best Sodium Bentonite manufacturers in Alabama as we have the infrastructure and suitable facilities to provide dirt free bentonite to use in ceramic and other similar industries. Bentonite also has great possibilities in medical fields and we have a huge demand from this industry.
+    </p>
+  </section>
+  <section id="Extraction Point New Zealand" >
+    <h3>New Zealand Bentonite</h3>
+    <p>
+      New Zealand's largest bentonite quarry. Worked in the summer months, and processed at a plant in Coalgate.
+      Bentonite in the area in its natural state is non swelling, but is processed with soda ash, to change it to a swelling variety. The clay is sold as a number of products, including as a fine powder for a growth medium and fertilizer, skin care and cosmetics, inhibiting the ingress of water into bore holes, grouting, civil and geotechnical applications such as clay liners in tunnels, land capping, land fill cell construction, and liners to dams, underground slurry walls, and barriers, paper making, and the treatment of waste effluent.
+
+    </p>
+  </section>
+  <section id="Extraction Point Greece" >
+    <h3>Greece Bentonite</h3>
+    <p>
+    The clay minerals bentonite and kaolinite inform us whether the volcanic fluids were alkaline or acid: bentonite on Milos was formed by the leaching of porous, fragmentary rocks by seawater mixed with hot volcanic, alkaline waters. When the same porous rocks were also leached by hot, acid fluids, a blanket of kaolinite was deposited on the earlier bentonite. The bentonite of Milos is of very high quality. Three distinct groups of bentonite appear on Milos with slightly different properties: the deposits of Zoulias- Aspro Horio-Tsantili, the largest deposit of Angeria and Koufi, and finally the deposits of Ano and Kato Komia, Rema and Mavrogiannos. Greece is the second largest producer of bentonite after USA. Most of the country’s production comes from Milos.
+    </p>
+  </section>
+  <section id="Extraction Point Australia" >
+    <h3>Australia Bentonite</h3>
+    <p>
+      Bentonite Resources process the Ebenezer bentonite to serve a diverse range of end uses and industries. The Ebenezer bentonite is recognised as a premium 'Wyoming type' sodium bentonite and is well suited to technical applications such as drilling, foundry and geosynthetic clay liners, as well as general civil engineering.
+      The Ebenezer processing facility is geared to mill, test and package the end product in anything from small bags, bulk bags and full pneumatic tanker loads. All testing is carried out on site at the point and time of production ensuring extremely high uniformity and traceability. This provides our customers and end users with a high level of confidence and repeatability across the board.
+
+    </p>
+  </section>
+  <section id="Extraction Point Germany" >
+    <h3>Germany Bentonite</h3>
+    <p>
+Bavarian bentonites form the largest bentonite mining district in Central Europe, with an annual production of 350.000 tons and a mining history dates back 110 years.
+    </p>
+  </section>
+  <section id="Extraction Point China" >
+    <h3>China Bentonite</h3>
+    <p>
+      To be suitable for lower solid mud, has clear action on stop falling anything from caving and stop up leak.it has good close water base of interchangeability,thixotropy,lubrication,dilatancy,suspension property and similar to white powder, it is also or be used for oil and gas well drilling and civil-engineering include applied drilling fluid system, applied fluid solutions for diaphragm walls and piles, lubrication fluids for micro tunneling or pipe jacking,drilling fluids for water well, exploration and mining, fluids solution for shield tunneling.
+    </section>
+    <section id="Extraction Point Russia" >
+      <h3>Russia Bentonite</h3>
+      <p>
+  The main customers of «Bentonite of Khakassia» Ltd. are the companies of the leading sectors of Russian economy: oil and gas, metallurgy, casting and construction. In these industries bentonite is used for the preparation of drilling fluids, molding compounds and enriched ore pelletizing. Currently the application of bentonite in the chemical industry, agricultural and livestock production, in winemaking is expanding. Bentonite and products based on this are used for various environmental purposes, for waterproofing, as well as sewage treatment and disposal of nuclear waste.
+      </section>
+      <section id="Extraction Point India" >
+        <h3>India Bentonite</h3>
+        <p>
+The Indian bentonite is essentially plastic clay with flexible viscosity. It contains almost 85% montmorillonite, a clay mineral. However, the name of the mineral refers to the place in the USA where it was first found. The natural clay is of a great commercial significance. Its bleaching property is often similar to the fuller’s earth. The wide usage of this healing clay is for bleaching and hence also known as bleaching clay.
+        </section>
+        <section id="Extraction Point India" >
+          <h3>India Bentonite</h3>
+          <p>
+             By Deron Charlery
+          </section>
+          <section id="Extraction Point India">
+            <h3>India Bentonite</h3>
+            <p>
+            Thank
+            </section>
+            <section id="Extraction Point India">
+              <h3>India Bentonite</h3>
+              <p>
+              You
+              </section>
+              <section id="Extraction Point India" >
+                <h3>India Bentonite</h3>
+                <p>
+              Reviewers
+                  <small id="citation">
+                    Adapted from
+                    <a href="http://www.gutenberg.org/files/2346/2346-h/2346-h.htm">Project Gutenberg</a>
+                  </small>
+                </section>
+              </div>
+              <script>
+              mapboxgl.accessToken = 'pk.eyJ1IjoidHJlZWZhbGxkb3duIiwiYSI6ImNrYmlwNWkzaDBmYmgyeWswcTVsa3ZvMmUifQ.K98vl28x9Km5pWBpKL_opQ';
+              const map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/dark-v9',
+                center: [-78.82087,42.95285],
+                zoom:15,
+                // bearing: 27,
+                // pitch: 45
+              });
+
+              const chapters = {
+                'Extraction Point Wyoming': {
+                  // bearing: 90,
+                  center: [-108.24547,42.83357],
+                  zoom:5,
+                  // pitch: 40
+                },
+                'Extraction Point Mississippi': {
+                  // duration: 6000,
+                  center: [-89.88343,32.40564],
+                  // bearing:90,
+                  // zoom: 15,
+                  // pitch: 40
+                },
+                'Extraction Point Alabama': {
+                  // bearing: 90,
+                  center: [-86.03017,32.87936],
+                  // zoom: 13,
+                  // speed: 0.6,
+                  // pitch: 40
+                },
+                'Extraction Point New Zealand': {
+                  // bearing: 90,
+                  center: [168.18110,-45.71813],
+                  zoom: 9
+                  // pitch: 40
+                },
+                'Extraction Point Greece': {
+                  // bearing: 90,
+                  center: [24.50660,36.70536],
+                  // zoom: 15.3,
+                  // pitch: 40,
+                  // speed: 0.5
+                },
+                'Extraction Point Australia': {
+                  // bearing: 90,
+                  center: [139.22729,-34.80193],
+                  zoom:9
+                  // pitch: 40
+                },
+                'Extraction Point Germany': {
+                  // bearing: 90,
+                  center: [11.00420,49.21378],
+                  // zoom: 17.3,
+                  // pitch: 40
+                },
+                'Extraction Point China': {
+                  // bearing: 90,
+                  center: [119.12379,36.70288],
+                  zoom: 14.3,
+                  // pitch: 40
+                },
+                'Extraction Point Russia': {
+                  // bearing: 90,
+                  zoom: 9,
+                  center: [90.01308,53.125563],
+                  // zoom: 17.3,
+                  // pitch: 40
+                },
+                'Extraction Point India': {
+                  // bearing: 90,
+                  center: [79.45811,20.12728],
+                  // zoom: 17.3,
+                  // pitch: 40
+                },
+                'Extraction Point India': {
+                  // bearing: 90,
+                  center: [79.45811,20.12728],
+                  // zoom: 17.3,
+                  // pitch: 40
+                },
+                'Extraction Point India': {
+                  // bearing: 90,
+                  center: [79.45811,20.12728],
+                  // zoom: 17.3,
+                  // pitch: 40
+                },
+                'Extraction Point India': {
+                  // bearing: 90,
+                  center: [79.45811,20.12728],
+                  // zoom: 17.3,
+                  // pitch: 40
+                },
+                'Extraction Point India': {
+                  // bearing: 90,
+                  center: [79.45811,20.12728],
+                  // zoom: 17.3,
+                  // pitch: 40
+                }
+              };
+              let activeChapterName = 'Extraction Point One';
+              function setActiveChapter(chapterName) {
+                if (chapterName === activeChapterName) return;
+
+                map.flyTo(chapters[chapterName]);
+
+                document.getElementById(chapterName).classList.add('active');
+                document.getElementById(activeChapterName).classList.remove('active');
+
+                activeChapterName = chapterName;
+              }
+
+              function isElementOnScreen(id) {
+                const element = document.getElementById(id);
+                const bounds = element.getBoundingClientRect();
+                return bounds.top < window.innerHeight && bounds.bottom > 0;
+              }
+
+              // On every scroll event, check which element is on screen
+              window.onscroll = () => {
+                for (const chapterName in chapters) {
+                  if (isElementOnScreen(chapterName)) {
+                    setActiveChapter(chapterName);
+                    break;
+                  }
+                }
+              };
+              </script>
+
+            </body>
+            </html>
